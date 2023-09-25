@@ -30,12 +30,14 @@ import HomePage from "./pages/HomePage";
 import EditEventPage from "./pages/EditEventPage";
 import EventDetailPage, {
   loader as eventDetailLoader,
+  action as eventDeleteAction
 } from "./pages/EventDetailPage";
 import EventsPage, { loader as eventLoader } from "./pages/EventsPage";
-import NewEventPage, { action as newEventAction } from "./pages/NewEventPage";
+import NewEventPage from "./pages/NewEventPage";
 import RootLayout from "./pages/layout/RootLayout";
 import EventsLayout from "./pages/layout/EventsLayout";
 import ErrorPage from "./pages/ErrorPage";
+import { action as manipulateEventAction } from './components/EventForm'
 
 const routeDefinitions = createRoutesFromElements(
   <Route>
@@ -59,11 +61,11 @@ const routeDefinitions = createRoutesFromElements(
               id="event-detail"
               loader={eventDetailLoader}
               children={[
-                <Route index={true} element={<EventDetailPage />} />,
-                <Route path="edit" element={<EditEventPage />} />,
+                <Route index={true} element={<EventDetailPage />} action={eventDeleteAction}/>,
+                <Route path="edit" element={<EditEventPage />} action={manipulateEventAction}/>,
               ]}
             />,
-            <Route path="new" element={<NewEventPage />} action={newEventAction}/>,
+            <Route path="new" element={<NewEventPage />} action={manipulateEventAction}/>,
           ]}
         />,
       ]}
