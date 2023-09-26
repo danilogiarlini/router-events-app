@@ -30,14 +30,15 @@ import HomePage from "./pages/HomePage";
 import EditEventPage from "./pages/EditEventPage";
 import EventDetailPage, {
   loader as eventDetailLoader,
-  action as eventDeleteAction
+  action as eventDeleteAction,
 } from "./pages/EventDetailPage";
 import EventsPage, { loader as eventLoader } from "./pages/EventsPage";
 import NewEventPage from "./pages/NewEventPage";
 import RootLayout from "./pages/layout/RootLayout";
 import EventsLayout from "./pages/layout/EventsLayout";
 import ErrorPage from "./pages/ErrorPage";
-import { action as manipulateEventAction } from './components/EventForm'
+import { action as manipulateEventAction } from "./components/EventForm";
+import NewsletterPage, {action as newsletterAction} from "./pages/Newsletter";
 
 const routeDefinitions = createRoutesFromElements(
   <Route>
@@ -61,12 +62,29 @@ const routeDefinitions = createRoutesFromElements(
               id="event-detail"
               loader={eventDetailLoader}
               children={[
-                <Route index={true} element={<EventDetailPage />} action={eventDeleteAction}/>,
-                <Route path="edit" element={<EditEventPage />} action={manipulateEventAction}/>,
+                <Route
+                  index={true}
+                  element={<EventDetailPage />}
+                  action={eventDeleteAction}
+                />,
+                <Route
+                  path="edit"
+                  element={<EditEventPage />}
+                  action={manipulateEventAction}
+                />,
               ]}
             />,
-            <Route path="new" element={<NewEventPage />} action={manipulateEventAction}/>,
+            <Route
+              path="new"
+              element={<NewEventPage />}
+              action={manipulateEventAction}
+            />,
           ]}
+        />,
+        <Route
+          path="newsletter"
+          element={<NewsletterPage />}
+          action={newsletterAction}
         />,
       ]}
     />
