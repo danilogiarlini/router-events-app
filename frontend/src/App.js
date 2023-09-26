@@ -38,7 +38,7 @@ import RootLayout from "./pages/layout/RootLayout";
 import EventsLayout from "./pages/layout/EventsLayout";
 import ErrorPage from "./pages/ErrorPage";
 import { action as manipulateEventAction } from "./components/EventForm";
-import NewsletterPage, {action as newsletterAction} from "./pages/Newsletter";
+import NewsletterPage, {action as newsletterAction} from "./pages/NewsletterPage";
 
 const routeDefinitions = createRoutesFromElements(
   <Route>
